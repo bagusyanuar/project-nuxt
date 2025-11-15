@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 export const loginSchema = z.object({
-  email: z.string().min(1, "email is required").email("email is invalid"),
+  email: z.string().nonempty('email is required').email("email is invalid"),
   password: z
     .string()
-    .min(1, "Password is required")
+    .nonempty("password is required")
     .min(6, "Password must be at least 6 characters"),
 });
 
