@@ -1,0 +1,1 @@
+export {default as BasePasswordField} from './BasePasswordField.vue'
