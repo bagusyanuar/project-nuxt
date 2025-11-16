@@ -25,10 +25,10 @@ import SidebarItemTree from './SidebarItemTree.vue';
                     <SidebarItem text="Unit" icon="lucide:building" />
                     <SidebarItem text="Kamar" icon="lucide:hospital" />
                     <SidebarItemTree text="Instalasi & Unit" icon="lucide:hospital" />
-                    <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }"
+                    <!-- <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }"
                         :variants="{ custom: { scale: 2 } }" :hovered="{ scale: 1.2 }" :delay="200" :duration="1200">
                         test
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </aside>
