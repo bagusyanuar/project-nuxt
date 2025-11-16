@@ -4,6 +4,7 @@ import { loginSchema, type LoginSchema } from "~/schemas/auth/login.schema";
 import { usePageLoader } from "~/composables/components/pageLoader";
 
 export const useFormlogin = () => {
+  const router = useRouter()
   const { startPageLoader, endPageLoader } = usePageLoader();
   const { handleSubmit } = useForm({
     validationSchema: toTypedSchema(loginSchema),
@@ -30,6 +31,8 @@ export const useFormlogin = () => {
     }
 
     endPageLoader();
+
+    router.push('/dashboard')
   };
 
   return {
