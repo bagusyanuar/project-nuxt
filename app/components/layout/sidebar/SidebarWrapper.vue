@@ -8,11 +8,11 @@ import SidebarItemTree from './SidebarItemTree.vue';
         <aside class="w-64 h-dvh fixed z-50">
             <div class="w-full h-full flex flex-col bg-teal-600 shadow-lg shadow-teal-500">
                 <!-- sidebar brand -->
-                <div class="w-full h-24 px-6 flex items-center gap-1.5">
-                    <img src="~/assets/images/logo.png" alt="brand-logo" class="h-12 w-fit">
+                <div class="w-full h-20 px-6 flex items-center gap-1.5">
+                    <img src="~/assets/images/logo.png" alt="brand-logo" class="h-10 w-fit">
                     <div class="flex flex-col">
                         <span class="text-white text-sm font-bold">KEMENKES</span>
-                        <span class="text-white text-xs">Sample SIMRS</span>
+                        <span class="text-white text-xs">SIMRS</span>
                     </div>
                 </div>
 
