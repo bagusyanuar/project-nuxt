@@ -7,8 +7,6 @@ const isOpen = ref<boolean>(false)
 const dropdownRef = ref<HTMLElement | null>(null)
 
 const toggleOpen = () => {
-    console.log('toggle');
-
     isOpen.value = !isOpen.value
 }
 
@@ -30,12 +28,12 @@ onBeforeUnmount(() => {
 
 <template>
     <nav class="w-full h-16 ps-64 bg-neutral-100 fixed top-0 left-0 z-30 shadow">
-        <div class="w-full h-full px-4 flex items-center justify-between">
+        <div class="w-full h-full px-6 flex items-center justify-between">
             <div class="flex">
-                <div class="flex flex-col">
-                    <span class="block text-xs text-neutral-900">Selamat Datang,</span>
-                    <span class="block text-sm text-neutral-700 font-semibold">Superdev<span
-                            class="text-md ms-2">🖐</span></span>
+                <div class="">
+                    <span class="inline-block text-sm text-neutral-900">Selamat Datang,</span>
+                    <span class="text-sm text-neutral-700 font-semibold ms-2">Superdev<span
+                            class="text-md ms-1">🖐</span></span>
                 </div>
             </div>
             <div class="relative">

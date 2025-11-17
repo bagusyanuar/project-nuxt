@@ -8,7 +8,7 @@ import { NavbarWrapper } from '~/components/layout/navbar';
         <SidebarWrapper />
         <NavbarWrapper />
         <main class="ps-64 pt-16">
-            <section class="w-full p-4">
+            <section class="w-full p-6">
                 <slot />
             </section>
         </main>
