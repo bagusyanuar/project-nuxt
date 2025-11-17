@@ -4,14 +4,21 @@ import { Icon } from '@iconify/vue'
 import { twMerge } from 'tailwind-merge'
 import { useMotion } from '@vueuse/motion';
 
+type TChild = {
+    to?: string
+    text?: string
+}
+
 interface ISidebarItemTreeProps {
     text?: string
     icon?: string
+    branchs?: TChild[]
 }
 
 withDefaults(defineProps<ISidebarItemTreeProps>(), {
     text: 'Menu',
-    icon: 'lucide:circle'
+    icon: 'lucide:circle',
+    branchs: () => [] as TChild[]
 })
 
 const isActive = ref<boolean>(false)
@@ -37,7 +44,6 @@ const toggleActive = async () => {
             collapsibleRef.value!.style.height = h + "px";
 
         }
-        // Height will be measured automatically by useElementSize
     } else {
         // Collapsing: Just set inactive
         if (collapsibleRef.value) {
@@ -45,7 +51,9 @@ const toggleActive = async () => {
             collapsibleRef.value!.style.transition = "height 0.2s ease-in-out";
             collapsibleRef.value!.style.height = "0px";
         }
-        isActive.value = false
+        setTimeout(() => {
+            isActive.value = false
+        }, 200);
     }
 }
 
@@ -54,27 +62,29 @@ const toggleActive = async () => {
 <template>
     <div class="w-full">
         <div :class="twMerge(
-            'w-full group relative px-3 py-2.5 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-white/20 transition-all duration-300 ease-in-out',
+            'w-full group relative px-3 py-3 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-white/20 transition-all duration-300 ease-in-out',
             isActive ? 'bg-white/20' : ''
         )" @click="toggleActive">
-            <Icon :icon="icon"
-                class="text-white/80 h-4 aspect-square group-hover:text-white transition-all duration-300 ease-in-out" />
+            <Icon :icon="icon" width="18" height="18"
+                class="text-white/80 aspect-square group-hover:text-white transition-all duration-300 ease-in-out" />
             <span class="flex-1 text-sm text-white/80 group-hover:text-white transition-all duration-300 ease-in-out">
                 {{ text }}
             </span>
-            <Icon icon="lucide:chevron-right"
-                class="text-white/80 h-4 aspect-square group-hover:text-white transition-all duration-300 ease-in-out" />
+            <Icon icon="lucide:chevron-right" width="18" height="18" :class="twMerge(
+                'text-white/80 aspect-square group-hover:text-white transition-all duration-300 ease-in-out',
+                isActive ? 'rotate-90' : ''
+            )" />
         </div>
         <ClientOnly>
-            <div v-if="isActive" ref="collapsibleRef" class="w-full overflow-hidden">
-                <div class="w-full flex flex-col  ps-6 pt-1">
-                    <div class="w-full border-l border-neutral-300 ps-1.5">
-                        <a href="#"
-                            class="text-sm text-white/80 px-2.5 py-1.5 w-full rounded-md flex items-center gap-2 cursor-pointer hover:bg-white/20 hover:text-white transition-all duration-300 ease-in-out">Instalasi</a>
-                        <a href="#"
-                            class="text-sm text-white/80 px-2.5 py-1.5 w-full rounded-md flex items-center gap-2 cursor-pointer hover:bg-white/20 hover:text-white transition-all duration-300 ease-in-out">Unit</a>
-                        <a href="#"
-                            class="text-sm text-white/80 px-2.5 py-1.5 w-full rounded-md flex items-center gap-2 cursor-pointer hover:bg-white/20 hover:text-white transition-all duration-300 ease-in-out">Kamar</a>
+            <div v-if="branchs.length > 0">
+                <div v-show="isActive" ref="collapsibleRef" class="w-full overflow-hidden">
+                    <div class="w-full flex flex-col  ps-6 pt-1">
+                        <div class="w-full border-l border-neutral-300 ps-1.5">
+                            <a v-for="(branch, index) in branchs" :key="index" :href="branch.to || '#'"
+                                class="text-xs text-white/80 px-2.5 py-1.5 w-full rounded-md flex items-center gap-2 cursor-pointer hover:bg-white/20 hover:text-white transition-all duration-300 ease-in-out">
+                                {{ branch.text }}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -18,13 +18,38 @@ import SidebarItemTree from './SidebarItemTree.vue';
 
                 <!-- sidebar menu -->
                 <div class="w-full flex-1 flex flex-col gap-1 px-3 py-3 overflow-auto">
+                    <SidebarItem text="Dashboard" icon="lucide:layout-dashboard" />
                     <div class="w-full px-3 my-1">
                         <span class="block text-xs font-light text-white">Master Data</span>
                     </div>
-                    <SidebarItem text="Instalasi" icon="lucide:building" />
-                    <SidebarItem text="Unit" icon="lucide:building" />
-                    <SidebarItem text="Kamar" icon="lucide:hospital" />
-                    <SidebarItemTree text="Instalasi & Unit" icon="lucide:hospital" />
+                    <SidebarItemTree text="Instalasi & Unit" icon="lucide:hospital" :branchs="[
+                        {
+                            text: 'Instalasi',
+                            to: '/installation'
+                        },
+                        {
+                            text: 'Unit',
+                            to: '/unit'
+                        },
+                        {
+                            text: 'Kamar',
+                            to: '/room'
+                        }
+                    ]" />
+                    <SidebarItemTree text="Tenaga Kerja" icon="lucide:hand-heart" :branchs="[
+                        {
+                            text: 'Tenaga Kerja Non Medis',
+                            to: '/installation'
+                        },
+                        {
+                            text: 'Tenaga Kerja Medis',
+                            to: '/unit'
+                        },
+                        {
+                            text: 'Jadwal',
+                            to: '/room'
+                        }
+                    ]" />
                     <!-- <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }"
                         :variants="{ custom: { scale: 2 } }" :hovered="{ scale: 1.2 }" :delay="200" :duration="1200">
                         test
