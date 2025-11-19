@@ -10,8 +10,6 @@ usePageLoader(pageLoaderRef)
 <template>
     <NuxtLayout>
         <NuxtPage />
-        <client-only>
-            <PageLoader ref="pageLoaderRef" />
-        </client-only>
+        <PageLoader ref="pageLoaderRef" />
     </NuxtLayout>
 </template>

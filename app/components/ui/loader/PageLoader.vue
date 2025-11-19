@@ -39,11 +39,9 @@ export interface PageLoaderMethods {
 </script>
 
 <template>
-    <client-only>
-        <div v-if="visible" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-            <div ref="el" class="bg-white w-80 max-w-sm p-6 rounded-xl shadow-xl text-center">
-                <span class="text-lg font-semibold">Loading...</span>
-            </div>
+    <div v-if="visible" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div ref="el" class="bg-white w-80 max-w-sm p-6 rounded-xl shadow-xl text-center">
+            <span class="text-lg font-semibold">Loading...</span>
         </div>
-    </client-only>
+    </div>
 </template>

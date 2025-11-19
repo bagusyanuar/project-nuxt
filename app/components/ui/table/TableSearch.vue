@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<ITableSearchProps>(), {
 
 const attrs = useAttrs()
 
-const model = defineModel<string>()
+const model = defineModel<string>({ default: '' })
 
 let debounceTimer: ReturnType<typeof setTimeout> | null = null
 

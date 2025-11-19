@@ -10,6 +10,8 @@ const attrs = useAttrs()
         'bg-white shadow-2xl p-6 rounded-lg border-t-3 border-teal-500',
         attrs.class as string | undefined
     )">
+        <!-- <ClientOnly> -->
         <slot />
+        <!-- </ClientOnly> -->
     </div>
 </template>

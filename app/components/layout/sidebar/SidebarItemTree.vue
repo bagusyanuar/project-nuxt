@@ -75,19 +75,19 @@ const toggleActive = async () => {
                 isActive ? 'rotate-90' : ''
             )" />
         </div>
-        <ClientOnly>
-            <div v-if="branchs.length > 0">
-                <div v-show="isActive" ref="collapsibleRef" class="w-full overflow-hidden">
-                    <div class="w-full flex flex-col  ps-6 pt-1">
-                        <div class="w-full border-l border-neutral-300 ps-1.5">
-                            <a v-for="(branch, index) in branchs" :key="index" :href="branch.to || '#'"
-                                class="text-xs text-white/80 px-2.5 py-1.5 w-full rounded-md flex items-center gap-2 cursor-pointer hover:bg-white/20 hover:text-white transition-all duration-300 ease-in-out">
-                                {{ branch.text }}
-                            </a>
-                        </div>
+        <!-- <ClientOnly> -->
+        <div v-if="branchs.length > 0">
+            <div v-show="isActive" ref="collapsibleRef" class="w-full overflow-hidden">
+                <div class="w-full flex flex-col  ps-6 pt-1">
+                    <div class="w-full border-l border-neutral-300 ps-1.5">
+                        <NuxtLink v-for="(branch, index) in branchs" :key="index" :to="branch.to || '#'"
+                            class="text-xs text-white/80 px-2.5 py-1.5 w-full rounded-md flex items-center gap-2 cursor-pointer hover:bg-white/20 hover:text-white transition-all duration-300 ease-in-out">
+                            {{ branch.text }}
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
-        </ClientOnly>
+        </div>
+        <!-- </ClientOnly> -->
     </div>
 </template>
